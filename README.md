@@ -45,7 +45,7 @@ Run the following commands inside your Claude Code terminal:
 /plugin marketplace add Varnan-Tech/opendirectory
 
 # Install a skill directly
-/plugin install claude-md-generator@OpenDirectory-Marketplace
+/plugin install opendirectory-gtm-skills@opendirectory-marketplace
 ```
 
 ## Step 1: View Available Skills

@@ -1,0 +1,14 @@
+{
+  "name": "opendirectory-marketplace",
+  "description": "Official marketplace for OpenDirectory skills",
+  "owner": {
+    "name": "Varnan"
+  },
+  "plugins": [
+    {
+      "name": "opendirectory-gtm-skills",
+      "source": "./",
+      "description": "28+ GTM and Marketing Skills"
+    }
+  ]
+}
