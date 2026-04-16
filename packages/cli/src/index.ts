@@ -2,6 +2,7 @@
 
 import { Command } from 'commander';
 import * as fs from 'node:fs/promises';
+import * as fsSync from 'node:fs';
 import * as path from 'node:path';
 import { Skill } from './transformers';
 import { safeWriteFile } from './fs-adapters';
@@ -11,10 +12,12 @@ import Table from 'cli-table3';
 
 const program = new Command();
 
+const pkg = JSON.parse(fsSync.readFileSync(path.join(__dirname, '../package.json'), 'utf-8'));
+
 program
   .name('@opendirectory.dev/skills')
   .description(chalk.blue.bold('CLI to install OpenDirectory skills'))
-  .version('0.1.1');
+  .version(pkg.version);
 
 const getProjectRoot = () => {
   return path.resolve(__dirname, '..');

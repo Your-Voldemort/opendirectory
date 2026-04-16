@@ -39,11 +39,16 @@ jobs:
       - name: Update CONTRIBUTING with claimed skills
         run: pnpm exec tsx scripts/update-contributing.ts
 
-      - name: Commit updated README and CONTRIBUTING
+      - name: Bump CLI version
+        run: |
+          cd packages/cli
+          npm version patch --no-git-tag-version
+
+      - name: Commit updated README, CONTRIBUTING, and package.json
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "docs: auto-update skills list in README and CONTRIBUTING [skip ci]"
-          file_pattern: "README.md CONTRIBUTING.md"
+          commit_message: "chore: auto-update skills list and bump version [skip ci]"
+          file_pattern: "README.md CONTRIBUTING.md packages/cli/package.json"
 
       - name: Build Claude Plugin manifest
         run: pnpm exec tsx scripts/build-claude-plugin.ts
