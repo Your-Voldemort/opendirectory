@@ -16,7 +16,11 @@ function generateMarkdownTable(skills: Skill[]): string {
   table += '|---|---|---|\n';
 
   for (const skill of skills) {
-    let desc = skill.description.replace(/<[^>]*>?/gm, '').replace(/!\[.*?\]\(.*?\)/g, '').trim();
+    let desc = skill.description.replace(/<img[^>]*>/gm, '').replace(/!\[.*?\]\(.*?\)/g, '').trim();
+    
+    desc = desc.replace(/^[>#\-\*\s]+/, '');
+    desc = desc.replace(/(\*\*|__|\*|_)/g, '');
+    desc = desc.replace(/`/g, '');
     
     desc = desc
       .replace(/\n/g, ' ')

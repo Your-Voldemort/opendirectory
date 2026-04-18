@@ -1,13 +1,7 @@
 ---
 name: human-tone
 version: 1.0.0
-description: |
-  Remove AI writing patterns from GTM and technical marketing copy. Built for
-  cold emails, product pages, launch posts, outreach sequences, LinkedIn content,
-  carousel scripts, and developer-facing marketing. Strips slop, kills fluff,
-  and rewrites in a voice that sounds like a founder talking — not a content
-  team performing. Based on the Wikipedia "Signs of AI writing" guide, extended
-  with patterns specific to B2B SaaS and developer marketing.
+description: Rewrites AI-generated marketing copy to sound naturally human. It removes common AI cliches, adjusts the pacing, and ensures the tone is authentic and engaging.
 license: MIT
 ---
 

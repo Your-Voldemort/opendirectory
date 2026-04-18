@@ -73,7 +73,7 @@
   },
   {
     "name": "human-tone",
-    "description": "|",
+    "description": "Rewrites AI-generated marketing copy to sound naturally human.",
     "tags": [],
     "author": "Unknown",
     "version": "1.0.0",
@@ -193,10 +193,10 @@
   },
   {
     "name": "show-hn-writer",
-    "description": "Draft a Show HN post title and body that follows the unwritten rules of Hacker News: specific, honest, first-person, no marketing.",
+    "description": "Draft a Show HN post backed by real HN performance data. Uses observed patterns from 250 top HN posts to maximise score.",
     "tags": [],
-    "author": "OpenDirectory",
-    "version": "1.0.0",
+    "author": "Varnan / Paras Madan",
+    "version": "2.0.0",
     "path": "skills/show-hn-writer"
   },
   {
