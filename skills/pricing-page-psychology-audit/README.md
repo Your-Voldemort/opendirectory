@@ -7,8 +7,8 @@
 > Quick Wins ranked by impact.
 
 [![opendirectory](https://img.shields.io/badge/opendirectory-skill-blue)](https://opendirectory.dev)
-[![version](https://img.shields.io/badge/version-1.0.0-green)](https://github.com/ajaycodesitbetter/opendirectory)
-[![license](https://img.shields.io/badge/license-MIT-orange)](LICENSE)
+[![version](https://img.shields.io/badge/version-1.0.0-green)](https://github.com/Varnan-Tech/opendirectory)
+[![license](https://img.shields.io/badge/license-MIT-orange)](https://opensource.org/licenses/MIT)
 
 ---
 

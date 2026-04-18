@@ -12,6 +12,7 @@ Output:
     Errors are printed to stderr so stdout stays clean.
 """
 
+import os
 import sys
 import re
 import requests
@@ -20,9 +21,9 @@ from bs4 import BeautifulSoup
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-TIMEOUT_SECONDS = 15
+TIMEOUT_SECONDS = int(os.environ.get("SCRAPE_TIMEOUT", 15))
 
-# Rotate user-agent to reduce bot-blocking (no API key needed)
+# Browser-like headers to reduce bot-blocking (no API key needed)
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -32,6 +33,11 @@ HEADERS = {
     "Accept-Language": "en-US,en;q=0.9",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
 }
+
+# Allow env var override of User-Agent (e.g. for custom scraping setups)
+_custom_ua = os.environ.get("SCRAPE_USER_AGENT")
+if _custom_ua:
+    HEADERS["User-Agent"] = _custom_ua
 
 # HTML tags that carry pricing-relevant content
 CONTENT_TAGS = ["h1", "h2", "h3", "h4", "p", "li", "span", "button", "a"]
@@ -76,6 +82,9 @@ def fetch_page(url: str) -> str:
                 "Try opening it in a browser and using the page source manually."
             )
         raise RuntimeError(f"HTTP error {code} for '{url}': {e}")
+
+    except requests.exceptions.RequestException as e:
+        raise RuntimeError(f"Unexpected request error for '{url}': {e}")
 
 
 # ── Extraction ────────────────────────────────────────────────────────────────
@@ -126,7 +135,7 @@ def extract_prices(soup: BeautifulSoup) -> list:
     """
     text = soup.get_text(" ", strip=True)
     price_pattern = re.compile(
-        r"(Free|free|\$[\d,.]+(?:/\w+)?|\u20ac[\d,.]+(?:/\w+)?|\xa3[\d,.]+(?:/\w+)?|"
+        r"(Free|free|\$[\d,.]+(?:/\w+)?|€[\d,.]+(?:/\w+)?|£[\d,.]+(?:/\w+)?|"
         r"[\d,.]+\s*(?:USD|EUR|GBP)(?:/\w+)?)"
     )
     matches = price_pattern.findall(text)
