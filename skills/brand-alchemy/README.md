@@ -39,7 +39,7 @@ The AI will automatically pause and initiate **Step 1: The Interrogation**, aski
 ### Video Tutorial
 Watch this quick video to see how it's done:
 
-<video src="../../docs/assets/install-skill-on-claude.webm" controls="controls" muted="muted" style="max-width: 100%;"></video>
+https://github.com/user-attachments/assets/ee98a1b5-ebc4-452f-bbfb-c434f2935067
 
 ### Step 1: Download the skill from GitHub
 1. Copy the URL of this specific skill folder from your browser's address bar.
