@@ -13,7 +13,7 @@ Instead of generating generic names, you will use elite, proven methodologies to
 Before executing any branding or naming task, refer to the deep-dive documentation inside the `references/` folder of this skill. **These files are massive, elite playbooks and must be read in their entirety to execute this skill properly:**
 1. **`references/core-brand-strategy.md`**: The elite brand strategy playbook. Contains Dunford's Positioning, Category Design mechanics, Collins' Transformation framework, and Pentagram's structural identity systems.
 2. **`references/lexicon-naming-science.md`**: The exact rules of Phonosemantics (Sound Symbolism) and Morpheme blending used to name billion-dollar companies. Contains deep case studies (BlackBerry, Swiffer, Pentium).
-3. **`scripts/domain-checker.sh`**: The universal bash script for automated domain verification (.com, .ai, .in, .tech, etc.).
+3. **`scripts/domain_checker.py`**: The universal python script for automated domain verification (.com, .ai, .in, .tech, etc.).
 
 ---
 
@@ -41,11 +41,11 @@ Present the top 5-7 names. You MUST explain the linguistic reasoning and sound s
 Run them through the Diamond Test: Distinctiveness, Processing Fluency, Relevance, and Energy.
 
 ### Step 4: Universal Automated Domain Verification
-You MUST NOT hallucinate domain availability. You must run the `domain-checker.sh` script located in the `scripts/` folder using the `Bash` tool. It supports all TLDs (.com, .io, .ai, .in, .tech) by utilizing a DNS NXDOMAIN primary check.
+You MUST NOT hallucinate domain availability. You must run the `domain_checker.py` script located in the `scripts/` folder using the `Bash` tool. It supports all TLDs (.com, .io, .ai, .in, .tech) by utilizing a DNS NXDOMAIN primary check and an RDAP fallback.
 
 ```bash
 # How to run the domain checker:
-bash scripts/domain-checker.sh mybrand.com mybrand.ai mybrand.in
+python scripts/domain_checker.py mybrand.com mybrand.ai mybrand.in
 ```
 
 ### Step 5: Final Recommendation
