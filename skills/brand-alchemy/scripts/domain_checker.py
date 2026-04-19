@@ -4,6 +4,9 @@ import urllib.request
 import json
 import ssl
 
+# Set UTF-8 encoding for standard output to support emojis
+sys.stdout.reconfigure(encoding='utf-8')
+
 def check_domain(domain):
     print(f"Checking {domain}...")
     
