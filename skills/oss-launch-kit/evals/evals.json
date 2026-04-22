@@ -1,0 +1,38 @@
+[
+  {
+    "repo": "cli/cli",
+    "full": "cli-cli.full.md",
+    "show_hn": "cli-cli.show-hn.md",
+    "md": "cli-cli.md"
+  },
+  {
+    "repo": "pydantic/pydantic",
+    "full": "pydantic-pydantic.full.md",
+    "show_hn": "pydantic-pydantic.show-hn.md",
+    "md": "pydantic-pydantic.md"
+  },
+  {
+    "repo": "dagger/dagger",
+    "full": "dagger-dagger.full.md",
+    "show_hn": "dagger-dagger.show-hn.md",
+    "md": "dagger-dagger.md"
+  },
+  {
+    "repo": "octocat/Hello-World",
+    "full": "octocat-hello-world.full.md",
+    "show_hn": "octocat-hello-world.show-hn.md",
+    "md": "octocat-hello-world.md"
+  },
+  {
+    "repo": "vercel/next.js",
+    "full": "vercel-next-js.full.md",
+    "show_hn": "vercel-next-js.show-hn.md",
+    "md": "vercel-next-js.md"
+  },
+  {
+    "repo": "tailwindlabs/tailwindcss",
+    "full": "tailwindlabs-tailwindcss.full.md",
+    "show_hn": "tailwindlabs-tailwindcss.show-hn.md",
+    "md": "tailwindlabs-tailwindcss.md"
+  }
+]
