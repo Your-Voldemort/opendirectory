@@ -30,29 +30,32 @@ https://github.com/user-attachments/assets/ee98a1b5-ebc4-452f-bbfb-c434f2935067
 
 - Fetches the product URL via Firecrawl (handles JS-rendered SPAs) or Tavily extract as fallback
 - Detects funding stage from CTA signals on the page (waitlist, free trial, pricing, sales CTAs)
-- Uses Gemini to map a 3-level industry taxonomy (L1 > L2 > L3) and identify 5 comparable funded companies
+- Maps a 3-level industry taxonomy (L1 > L2 > L3) from the product page
+- **Curated pre-match (Step 5b):** Scores product against a verified dataset of 25 VC funds (sourced from fund websites) -- instant zero-hallucination matches with no Tavily credits consumed
+- **Discovers comparable companies:** Curated portfolio companies from matched funds + Tavily live search for L3-niche specifics
 - Track A: 5 Tavily searches to find who invested in each comparable company
 - Track B: 3 Tavily searches to find VCs who publish investment theses about this specific niche
-- Gemini synthesizes and ranks all found VCs by stage fit and space fit (1-10 scores)
+- Synthesizes and ranks all found VCs -- curated matches labeled "verified", Tavily matches labeled by track
 - Produces top 5 deep-dives with fund overview, portfolio evidence, how-to-approach, and outreach hook
 - Generates 3 product-specific outreach hooks (not generic advice)
 - Saves output to `docs/vc-intel/[product]-[date].md`
+
+**Zero-hallucination guarantee:** Every VC name, fund detail, check size, portfolio company, and thesis source in the output must trace to either (a) the curated `data/vc_funds.json` dataset (sourced from fund websites) or (b) a specific Tavily search result. The AI does not draw from training knowledge for any factual claim.
 
 ## Requirements
 
 | Requirement | Purpose | How to Set Up |
 |---|---|---|
-| Gemini API key | Product analysis and VC synthesis | aistudio.google.com, Get API key |
 | Tavily API key | VC investment research (Track A and Track B) | app.tavily.com, free tier: 1000 credits/month |
-| Firecrawl API key | Fetching JS-rendered product pages | firecrawl.dev, free tier: 500 credits/month |
+| Firecrawl API key | Fetching JS-rendered product pages (optional) | firecrawl.dev, free tier: 500 credits/month |
 
-Gemini and Tavily are required. Firecrawl is recommended -- without it, Tavily extract is used as fallback (may miss JS-rendered content).
+Tavily is required. Firecrawl is recommended -- without it, Tavily extract is used as fallback (may miss JS-rendered content).
 
 ## Setup
 
 ```bash
 cp .env.example .env
-# Add GEMINI_API_KEY and TAVILY_API_KEY (required)
+# Add TAVILY_API_KEY (required)
 # Add FIRECRAWL_API_KEY (recommended)
 ```
 
@@ -90,9 +93,9 @@ Each run produces:
 ## Cost per Run
 
 - Firecrawl: ~$0.001 per fetch
-- Tavily: 8 searches at ~$0.01 each = ~$0.08
-- Gemini: 2 calls at ~$0.015 each = ~$0.03
-- Total: ~$0.12 per run
+- Tavily: 10 searches at ~$0.01 each = ~$0.10 (2 comparable discovery + 5 Track A + 3 Track B)
+- Curated pre-match (Step 5b): $0.00 -- local scoring against `data/vc_funds.json`, no API calls
+- Total: ~$0.10 per run
 
 ## Project Structure
 
@@ -101,6 +104,10 @@ vc-finder/
 ├── SKILL.md
 ├── README.md
 ├── .env.example
+├── data/
+│   └── vc_funds.json          (25 verified funds, sourced from fund websites)
+├── scripts/
+│   └── match_funds.py         (standalone scoring script for testing)
 ├── evals/
 │   └── evals.json
 └── references/

@@ -6,7 +6,6 @@
     "input": {
       "prompt": "Find VCs for my startup: https://linear.app",
       "env": {
-        "GEMINI_API_KEY": "set",
         "TAVILY_API_KEY": "set",
         "FIRECRAWL_API_KEY": "set"
       }
@@ -34,7 +33,6 @@
     "input": {
       "prompt": "Find investors for this consumer app: https://www.bereal.com",
       "env": {
-        "GEMINI_API_KEY": "set",
         "TAVILY_API_KEY": "set",
         "FIRECRAWL_API_KEY": "set"
       }
@@ -53,12 +51,11 @@
   },
   {
     "id": "eval_003",
-    "name": "Description-only input: skips fetch, goes direct to Gemini analysis",
-    "description": "User pastes a product description with no URL. Validates that Steps 3 and 4 are skipped and the skill proceeds directly to Gemini analysis.",
+    "name": "Description-only input: skips fetch, goes direct to AI analysis",
+    "description": "User pastes a product description with no URL. Validates that Steps 3 and 4 are skipped and the skill proceeds directly to AI analysis.",
     "input": {
       "prompt": "Find VCs for my startup. Here's what we do: We build an AI-powered legal contract review tool for in-house legal teams at mid-market companies. Our tool flags risky clauses and suggests standard language. We're pre-seed, 3 months post-launch, no pricing page yet. US-focused.",
       "env": {
-        "GEMINI_API_KEY": "set",
         "TAVILY_API_KEY": "set",
         "FIRECRAWL_API_KEY": "not set"
       }
@@ -67,7 +64,7 @@
       "Detects no URL in the input",
       "Skips Step 3: no fetch attempt is made",
       "Skips Step 4: no regex stage detection from page",
-      "Passes the pasted description directly to Gemini in Step 5",
+      "Passes the pasted description directly to the AI in Step 5",
       "Stage set to 'pre-seed' with high confidence (user stated it explicitly)",
       "Industry taxonomy: software > legaltech > contract review automation",
       "Generates 5 comparable legaltech companies",
@@ -79,20 +76,19 @@
   },
   {
     "id": "eval_004",
-    "name": "GEMINI_API_KEY missing: immediate stop at Step 1",
-    "description": "Validates that the skill stops at Step 1 with exact setup instructions when Gemini key is absent.",
+    "name": "TAVILY_API_KEY missing: immediate stop at Step 1",
+    "description": "Validates that the skill stops at Step 1 with exact setup instructions when Tavily key is absent.",
     "input": {
       "prompt": "Find VCs for https://stripe.com",
       "env": {
-        "GEMINI_API_KEY": "not set",
-        "TAVILY_API_KEY": "set",
+        "TAVILY_API_KEY": "not set",
         "FIRECRAWL_API_KEY": "set"
       }
     },
     "expected_behavior": [
-      "Step 1 detects GEMINI_API_KEY is missing",
+      "Step 1 detects TAVILY_API_KEY is missing",
       "Stops immediately at Step 1",
-      "Tells the user: 'GEMINI_API_KEY is required for product analysis and VC synthesis. Get it at aistudio.google.com. Add it to your .env file.'",
+      "Tells the user: 'TAVILY_API_KEY is required to research VC investments and theses. There is no fallback for this. Get it at app.tavily.com. Free tier: 1000 credits/month (about 125 full runs). Add it to your .env file.'",
       "Does NOT fetch the URL",
       "Does NOT run any Tavily searches",
       "Does NOT attempt any analysis"
@@ -100,26 +96,48 @@
     "expected_output": "Immediate stop at Step 1 with exact error message including the URL to get the key. No partial output generated."
   },
   {
-    "id": "eval_005",
-    "name": "TAVILY_API_KEY missing: immediate stop at Step 1, no fallback",
-    "description": "Validates that the skill stops at Step 1 when Tavily key is absent, with no fallback path suggested.",
+    "id": "eval_006",
+    "name": "Curated pre-match: DevTools seed product gets High confidence matches from vc_funds.json",
+    "description": "Validates Step 5b -- that the curated scoring algorithm correctly identifies DevTools-focused seed funds (Heavybit, boldstart, Amplify) as High confidence matches for a developer tool at seed stage, and their portfolio companies appear as seed comparables.",
     "input": {
-      "prompt": "Who invests in CI/CD automation startups? https://buildkite.com",
+      "prompt": "Find VCs for my startup: https://buildkite.com",
       "env": {
-        "GEMINI_API_KEY": "set",
-        "TAVILY_API_KEY": "not set",
+        "TAVILY_API_KEY": "set",
         "FIRECRAWL_API_KEY": "set"
       }
     },
     "expected_behavior": [
-      "Step 1 detects GEMINI_API_KEY is set",
-      "Step 1 detects TAVILY_API_KEY is missing",
-      "Stops immediately at Step 1",
-      "Tells the user: 'TAVILY_API_KEY is required to research VC investments and theses. There is no fallback for this. Get it at app.tavily.com. Free tier: 1000 credits/month (about 125 full runs). Add it to your .env file.'",
-      "Does NOT fetch the URL",
-      "Does NOT run any Gemini analysis",
-      "Does NOT suggest any workaround"
+      "Step 5b runs after Step 5",
+      "AI maps taxonomy to extracted_tags including 'DevTools' or 'Infrastructure'",
+      "Scoring produces at least 3 High confidence matches",
+      "Heavybit, boldstart, or Amplify Partners appear in high_medium_matches",
+      "curated_comparables includes portfolio companies like PagerDuty, Snyk, Datadog, or Netlify",
+      "Step 6 uses curated portfolio companies as primary comparables (source_type: curated_portfolio)",
+      "Final output includes a 'Curated Matches (Verified)' section",
+      "Curated VCs in output have source 'verified (fund website)' not a Tavily URL",
+      "No curated VC has fund_overview drawn from AI training knowledge -- thesis field used verbatim"
     ],
-    "expected_output": "Immediate stop at Step 1 with exact error message. Does not proceed past setup check."
+    "expected_output": "Curated Matches section with 3+ High/Medium DevTools funds, portfolio companies used as Track A comparables, merged output with verified and Tavily-sourced funds."
+  },
+  {
+    "id": "eval_005",
+    "name": "Firecrawl missing, Tavily extract fallback works",
+    "description": "Validates that the skill falls through to Tavily extract when Firecrawl is not set, and completes the full run successfully.",
+    "input": {
+      "prompt": "Who invests in CI/CD automation startups? https://buildkite.com",
+      "env": {
+        "TAVILY_API_KEY": "set",
+        "FIRECRAWL_API_KEY": "not set"
+      }
+    },
+    "expected_behavior": [
+      "Step 1 logs FIRECRAWL_API_KEY as not set and continues silently",
+      "Step 3 uses Tavily extract endpoint instead of Firecrawl",
+      "Content is fetched successfully (at least 200 chars)",
+      "Stage detection and AI analysis run normally",
+      "Full two-track VC output produced",
+      "No error about missing Firecrawl key in the final output"
+    ],
+    "expected_output": "Full VC list produced using Tavily extract fallback. No degraded output quality relative to Firecrawl path."
   }
 ]
