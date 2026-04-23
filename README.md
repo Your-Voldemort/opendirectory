@@ -53,6 +53,7 @@ OpenDirectory is a central library that allows you to add new capabilities, or s
 | [`position-me`](skills/position-me) | Elite Website Reviewer Agent for AEO, GEO, SEO, UI/UX Psychology, and Copywriting. | `0.0.1` |
 | [`pr-description-writer`](skills/pr-description-writer) | Read the current branch diff and write a complete GitHub pull request description. Create or update the PR with one command. | `1.0.0` |
 | [`pricing-page-psychology-audit`](skills/pricing-page-psychology-audit) | Audits any SaaS pricing page URL against 12 pricing psychology principles and outputs a ranked improvement report with specific rewrite suggestions... | `1.0.0` |
+| [`product-update-logger`](skills/product-update-logger) | Tell the skill what your product shipped. | `0.0.1` |
 | [`producthunt-launch-kit`](skills/producthunt-launch-kit) | Generate every asset you need for a Product Hunt launch: listing copy, maker comment, and day-one social posts. | `1.0.0` |
 | [`reddit-icp-monitor`](skills/reddit-icp-monitor) | Watches subreddits for people describing the exact problem you solve, scores their relevance to your ICP, and drafts a helpful non-spammy reply for... | `1.0.0` |
 | [`reddit-post-engine`](skills/reddit-post-engine) | Writes and optionally posts a Reddit post for any subreddit, following that subreddit's specific culture and rules. | `1.0.0` |
