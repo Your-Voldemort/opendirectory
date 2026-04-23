@@ -21,7 +21,7 @@
 **Notable Portfolio:** PagerDuty, Sanity, Netlify
 **Website:** https://www.heavybit.com
 **Match Score:** 100/100
-**Why this match:** This fund focuses on DevTools, Infrastructure, Open Source which aligns with your product's DevTools, Infrastructure, Open Source. They are active at Seed stage in US.
+**Why this match:** This fund focuses on DevTools, Infrastructure, Open Source which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 2. Amplify Partners — High Confidence
@@ -33,7 +33,7 @@
 **Notable Portfolio:** Datadog, OCTO, dbt Labs
 **Website:** https://www.amplifypartners.com
 **Match Score:** 80/100
-**Why this match:** This fund focuses on DevTools, Infrastructure which aligns with your product's DevTools, Infrastructure. They are active at Seed stage in US.
+**Why this match:** This fund focuses on DevTools, Infrastructure which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 3. Bain Capital Ventures — High Confidence
@@ -45,7 +45,7 @@
 **Notable Portfolio:** DocuSign, SendGrid, Redis
 **Website:** https://www.baincapitalventures.com
 **Match Score:** 80/100
-**Why this match:** This fund focuses on B2B SaaS, Infrastructure which aligns with your product's B2B SaaS, Infrastructure. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS, Infrastructure which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 4. Nexus Venture Partners — High Confidence
@@ -57,7 +57,7 @@
 **Notable Portfolio:** Postman, Hasura, Zepto
 **Website:** https://nexusvp.com
 **Match Score:** 80/100
-**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's B2B SaaS, DevTools. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 5. Unusual Ventures — High Confidence
@@ -69,7 +69,7 @@
 **Notable Portfolio:** Arctic Wolf, Harness, Vivun
 **Website:** https://www.unusual.vc
 **Match Score:** 80/100
-**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's B2B SaaS, DevTools. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 6. boldstart ventures — High Confidence
@@ -81,7 +81,7 @@
 **Notable Portfolio:** Snyk, Blockdaemon, Superhuman
 **Website:** https://boldstart.vc
 **Match Score:** 80/100
-**Why this match:** This fund focuses on DevTools, Infrastructure which aligns with your product's DevTools, Infrastructure. They are active at Seed stage in US.
+**Why this match:** This fund focuses on DevTools, Infrastructure which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 7. Accel — High Confidence
@@ -93,7 +93,7 @@
 **Notable Portfolio:** Facebook, Atlassian, Spotify
 **Website:** https://www.accel.com
 **Match Score:** 75/100
-**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's B2B SaaS, DevTools. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 8. OSS Capital — High Confidence
@@ -105,7 +105,7 @@
 **Notable Portfolio:** Cal.com, Appsmith, Hoppscotch
 **Website:** https://oss.capital
 **Match Score:** 75/100
-**Why this match:** This fund focuses on DevTools, Open Source which aligns with your product's DevTools, Open Source. They are active at Seed stage in US.
+**Why this match:** This fund focuses on DevTools, Open Source which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 9. Y Combinator — High Confidence
@@ -117,7 +117,7 @@
 **Notable Portfolio:** Stripe, Airbnb, GitLab
 **Website:** https://www.ycombinator.com
 **Match Score:** 75/100
-**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's B2B SaaS, DevTools. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS, DevTools which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 10. Point Nine Capital — Medium Confidence
@@ -129,7 +129,7 @@
 **Notable Portfolio:** Zendesk, Typeform, Docplanner
 **Website:** https://www.pointnine.com
 **Match Score:** 55/100
-**Why this match:** This fund focuses on B2B SaaS which aligns with your product's B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 

@@ -79,11 +79,11 @@ def score_fund(fund: Dict, product_context: Dict) -> Tuple[int, List[str]]:
     score += geo_points
     
     # 4. Final Penalties
-    # Bug 1: India-only funds in US searches penalty
+    # Heuristic 1: India-only funds in US searches penalty
     if geo_hint == "US" and "India" in fund_geo and "US" not in fund_geo and "Global" not in fund_geo:
         score = max(0, score - 30)
         
-    # Bug 2: Primary focus mismatch 
+    # Heuristic 2: Primary focus mismatch 
     if fund_tags and extracted_tags:
         if fund_tags[0] not in extracted_tags and tag_points <= 20:
             score = max(0, score - 15)

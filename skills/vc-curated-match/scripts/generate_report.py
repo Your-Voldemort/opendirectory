@@ -12,7 +12,7 @@ def _generate_rationale(matched_tags: List[str], product_context: Dict) -> str:
     stage = product_context.get("stage_hint") or "applicable"
     geo = product_context.get("geography_hint") or "Global"
     
-    return f"This fund focuses on {tags_str} which aligns with your product's {tags_str}. They are active at {stage} stage in {geo}."
+    return f"This fund focuses on {tags_str} which aligns with your product's identified sector(s). They are active at your target stage ({stage}) and correspond to your geography focus ({geo})."
 
 def generate_report(matches: List[Dict], product_context: Dict) -> str:
     """Convert matched VC data into a formatted Markdown report."""

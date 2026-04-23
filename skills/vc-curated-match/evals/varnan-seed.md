@@ -21,7 +21,7 @@
 **Notable Portfolio:** Zomato, Pine Labs, Cred
 **Website:** https://www.peakxv.com
 **Match Score:** 90/100
-**Why this match:** This fund focuses on AI, B2B SaaS, Consumer which aligns with your product's AI, B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on AI, B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 2. Accel — High Confidence
@@ -33,7 +33,7 @@
 **Notable Portfolio:** Facebook, Atlassian, Spotify
 **Website:** https://www.accel.com
 **Match Score:** 70/100
-**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 3. Accel India — High Confidence
@@ -45,7 +45,7 @@
 **Notable Portfolio:** Flipkart, Swiggy, Freshworks
 **Website:** https://www.accel.com/india
 **Match Score:** 70/100
-**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 4. Andreessen Horowitz (a16z) — High Confidence
@@ -57,7 +57,7 @@
 **Notable Portfolio:** Facebook, Coinbase, Figma
 **Website:** https://a16z.com
 **Match Score:** 70/100
-**Why this match:** This fund focuses on AI, Consumer which aligns with your product's AI, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on AI, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 5. Blume Ventures — High Confidence
@@ -69,7 +69,7 @@
 **Notable Portfolio:** Unacademy, Purplle, GreyOrange
 **Website:** https://blume.vc
 **Match Score:** 70/100
-**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 6. Cherry Ventures — High Confidence
@@ -81,7 +81,7 @@
 **Notable Portfolio:** FlixBus, Auto1 Group, Forto
 **Website:** https://www.cherry.vc
 **Match Score:** 70/100
-**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 7. Elevation Capital — High Confidence
@@ -93,7 +93,7 @@
 **Notable Portfolio:** Paytm, Swiggy, Meesho
 **Website:** https://elevationcapital.com
 **Match Score:** 70/100
-**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 8. First Round Capital — High Confidence
@@ -105,7 +105,7 @@
 **Notable Portfolio:** Uber, Notion, Roblox
 **Website:** https://firstround.com
 **Match Score:** 70/100
-**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 9. Founder Collective — High Confidence
@@ -117,7 +117,7 @@
 **Notable Portfolio:** Uber, Airtable, BuzzFeed
 **Website:** https://www.foundercollective.com
 **Match Score:** 70/100
-**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's B2B SaaS, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on B2B SaaS, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 ## 10. Greylock Partners — High Confidence
@@ -129,7 +129,7 @@
 **Notable Portfolio:** Workday, Palo Alto Networks, LinkedIn
 **Website:** https://greylock.com
 **Match Score:** 70/100
-**Why this match:** This fund focuses on AI, Consumer which aligns with your product's AI, Consumer. They are active at Seed stage in Global.
+**Why this match:** This fund focuses on AI, Consumer which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (Global).
 
 ---
 

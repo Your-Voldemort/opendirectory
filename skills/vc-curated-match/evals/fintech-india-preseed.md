@@ -21,7 +21,7 @@
 **Notable Portfolio:** Flipkart, Swiggy, Freshworks
 **Website:** https://www.accel.com/india
 **Match Score:** 70/100
-**Why this match:** This fund focuses on E-commerce, FinTech which aligns with your product's E-commerce, FinTech. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on E-commerce, FinTech which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 2. Bain Capital Ventures — Medium Confidence
@@ -33,7 +33,7 @@
 **Notable Portfolio:** DocuSign, SendGrid, Redis
 **Website:** https://www.baincapitalventures.com
 **Match Score:** 65/100
-**Why this match:** This fund focuses on FinTech, Infrastructure which aligns with your product's FinTech, Infrastructure. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on FinTech, Infrastructure which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 3. Amplify Partners — Medium Confidence
@@ -45,7 +45,7 @@
 **Notable Portfolio:** Datadog, OCTO, dbt Labs
 **Website:** https://www.amplifypartners.com
 **Match Score:** 50/100
-**Why this match:** This fund focuses on Data, Infrastructure which aligns with your product's Data, Infrastructure. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on Data, Infrastructure which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 4. boldstart ventures — Medium Confidence
@@ -57,7 +57,7 @@
 **Notable Portfolio:** Snyk, Blockdaemon, Superhuman
 **Website:** https://boldstart.vc
 **Match Score:** 40/100
-**Why this match:** This fund focuses on Infrastructure which aligns with your product's Infrastructure. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on Infrastructure which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 5. Elevation Capital — Low Confidence
@@ -69,7 +69,7 @@
 **Notable Portfolio:** Paytm, Swiggy, Meesho
 **Website:** https://elevationcapital.com
 **Match Score:** 35/100
-**Why this match:** This fund focuses on FinTech which aligns with your product's FinTech. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on FinTech which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 6. Peak XV Partners — Low Confidence
@@ -81,7 +81,7 @@
 **Notable Portfolio:** Zomato, Pine Labs, Cred
 **Website:** https://www.peakxv.com
 **Match Score:** 35/100
-**Why this match:** This fund focuses on FinTech which aligns with your product's FinTech. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on FinTech which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 7. Bessemer Venture Partners — Low Confidence
@@ -93,7 +93,7 @@
 **Notable Portfolio:** LinkedIn, Twilio, Shopify
 **Website:** https://www.bvp.com
 **Match Score:** 30/100
-**Why this match:** This fund focuses on FinTech which aligns with your product's FinTech. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on FinTech which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 8. Heavybit — Low Confidence
@@ -105,7 +105,7 @@
 **Notable Portfolio:** PagerDuty, Sanity, Netlify
 **Website:** https://www.heavybit.com
 **Match Score:** 30/100
-**Why this match:** This fund focuses on Infrastructure which aligns with your product's Infrastructure. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on Infrastructure which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 9. Index Ventures — Low Confidence
@@ -117,7 +117,7 @@
 **Notable Portfolio:** Dropbox, Slack, Figma
 **Website:** https://www.indexventures.com
 **Match Score:** 30/100
-**Why this match:** This fund focuses on FinTech which aligns with your product's FinTech. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on FinTech which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 ## 10. Lightspeed Venture Partners — Low Confidence
@@ -129,7 +129,7 @@
 **Notable Portfolio:** Snap, Rippling, MuleSoft
 **Website:** https://lsvp.com
 **Match Score:** 30/100
-**Why this match:** This fund focuses on FinTech which aligns with your product's FinTech. They are active at Pre-seed stage in India.
+**Why this match:** This fund focuses on FinTech which aligns with your product's identified sector(s). They are active at your target stage (Pre-seed) and correspond to your geography focus (India).
 
 ---
 

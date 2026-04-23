@@ -21,7 +21,7 @@
 **Notable Portfolio:** Stripe, Airbnb, GitLab
 **Website:** https://www.ycombinator.com
 **Match Score:** 75/100
-**Why this match:** This fund focuses on AI, B2B SaaS which aligns with your product's AI, B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on AI, B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 2. Nexus Venture Partners — Medium Confidence
@@ -33,7 +33,7 @@
 **Notable Portfolio:** Postman, Hasura, Zepto
 **Website:** https://nexusvp.com
 **Match Score:** 60/100
-**Why this match:** This fund focuses on B2B SaaS which aligns with your product's B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 3. Point Nine Capital — Medium Confidence
@@ -45,7 +45,7 @@
 **Notable Portfolio:** Zendesk, Typeform, Docplanner
 **Website:** https://www.pointnine.com
 **Match Score:** 55/100
-**Why this match:** This fund focuses on B2B SaaS which aligns with your product's B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 4. Amplify Partners — Medium Confidence
@@ -57,7 +57,7 @@
 **Notable Portfolio:** Datadog, OCTO, dbt Labs
 **Website:** https://www.amplifypartners.com
 **Match Score:** 45/100
-**Why this match:** This fund focuses on AI which aligns with your product's AI. They are active at Seed stage in US.
+**Why this match:** This fund focuses on AI which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 5. Andreessen Horowitz (a16z) — Medium Confidence
@@ -69,7 +69,7 @@
 **Notable Portfolio:** Facebook, Coinbase, Figma
 **Website:** https://a16z.com
 **Match Score:** 45/100
-**Why this match:** This fund focuses on AI which aligns with your product's AI. They are active at Seed stage in US.
+**Why this match:** This fund focuses on AI which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 6. Bain Capital Ventures — Medium Confidence
@@ -81,7 +81,7 @@
 **Notable Portfolio:** DocuSign, SendGrid, Redis
 **Website:** https://www.baincapitalventures.com
 **Match Score:** 45/100
-**Why this match:** This fund focuses on B2B SaaS which aligns with your product's B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 7. First Round Capital — Medium Confidence
@@ -93,7 +93,7 @@
 **Notable Portfolio:** Uber, Notion, Roblox
 **Website:** https://firstround.com
 **Match Score:** 45/100
-**Why this match:** This fund focuses on B2B SaaS which aligns with your product's B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 8. Founder Collective — Medium Confidence
@@ -105,7 +105,7 @@
 **Notable Portfolio:** Uber, Airtable, BuzzFeed
 **Website:** https://www.foundercollective.com
 **Match Score:** 45/100
-**Why this match:** This fund focuses on B2B SaaS which aligns with your product's B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 9. Greylock Partners — Medium Confidence
@@ -117,7 +117,7 @@
 **Notable Portfolio:** Workday, Palo Alto Networks, LinkedIn
 **Website:** https://greylock.com
 **Match Score:** 45/100
-**Why this match:** This fund focuses on AI which aligns with your product's AI. They are active at Seed stage in US.
+**Why this match:** This fund focuses on AI which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 ## 10. Index Ventures — Medium Confidence
@@ -129,7 +129,7 @@
 **Notable Portfolio:** Dropbox, Slack, Figma
 **Website:** https://www.indexventures.com
 **Match Score:** 45/100
-**Why this match:** This fund focuses on B2B SaaS which aligns with your product's B2B SaaS. They are active at Seed stage in US.
+**Why this match:** This fund focuses on B2B SaaS which aligns with your product's identified sector(s). They are active at your target stage (Seed) and correspond to your geography focus (US).
 
 ---
 

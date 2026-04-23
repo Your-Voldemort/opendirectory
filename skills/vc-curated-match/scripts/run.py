@@ -34,12 +34,18 @@ def main():
         sys.exit(1)
 
     try:
+        stage_input = args.stage.strip() if args.stage else None
+        if stage_input and stage_input.lower() == "pre-seed":
+            stage_input = "Pre-seed"
+        elif stage_input:
+            stage_input = stage_input.capitalize()
+
         # 1. Fetch Product Context
         product_context = get_product_context(
             description=args.description.strip(),
             url=args.url.strip(),
-            stage=args.stage.strip() if args.stage else None,
-            geography=args.geography.strip() if args.geography else "Global"
+            stage=stage_input,
+            geography=args.geography.strip() if args.geography else None
         )
         
         # 2. Match VCs
