@@ -2,11 +2,12 @@ import re
 from typing import Dict, List, Optional
 
 TAXONOMY = {
-    "AI": ["artificial intelligence", "machine learning", "ml", "llm", "large language model", "generative ai", "gen ai", "ai-powered", "ai powered", "neural network", "nlp", "natural language processing", "deep learning"],
+    "AI": ["ai", "artificial intelligence", "machine learning", "ml", "llm", "large language model", "generative ai", "gen ai", "ai-powered", "ai powered", "neural network", "nlp", "natural language processing", "deep learning"],
     "DevTools": ["developer tools", "devtools", "coding", "programming", "software development", "sdk", "developer", "developers", "engineering team", "software engineer", "for engineers", "cli", "terminal", "command line", "command-line", "command line tool"],
     "B2B SaaS": ["saas", "b2b", "enterprise software", "business software", "subscription software", "automation", "workflow", "productivity", "b2b software", "automate"],
     "Open Source": ["open source", "open-source", "coss", "github", "public repo"],
-    "FinTech": ["fintech", "financial", "payment", "banking", "crypto", "blockchain", "wallet"],
+    "FinTech": ["fintech", "financial", "payment", "banking"],
+    "Crypto": ["crypto", "blockchain", "bitcoin", "ethereum", "web3", "wallet"],
     "HealthTech": ["healthtech", "healthcare", "medical", "biotech", "wellness"],
     "Consumer": ["consumer", "b2c", "app", "social media", "social platform", "gaming", "lifestyle"],
     "DeepTech": ["deeptech", "robotics", "quantum", "hard tech", "science"],

@@ -13,7 +13,7 @@ def main():
     parser.add_argument("--description", required=True, help="Product description string.")
     parser.add_argument("--url", required=True, help="Product homepage or GitHub URL.")
     parser.add_argument("--stage", default=None, help="Optional startup stage hint.")
-    parser.add_argument("--geography", default="Global", help="Optional target geography (Defaults to Global).")
+    parser.add_argument("--geography", default=None, help="Optional target geography (Defaults to Global inference).")
     parser.add_argument("--output", default="vc-matches.md", help="Output file path (Defaults to vc-matches.md).")
 
     args = parser.parse_args()

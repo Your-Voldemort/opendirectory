@@ -15,7 +15,7 @@ The `vc-curated-match` is an OpenDirectory skill that connects founders and open
 
 ## Implementation Specs
 - Pulls from a static `data/vc_funds.json` dataset to guarantee data validity.
-- Ranks funds using tag-matching algorithms across industry focus, stage, and check size.
+- Ranks funds using tag-matching algorithms across industry focus, stage, and geography fit.
 - Outputs confidence tiers (High, Medium, Low) to transparently surface the precision of the fit.
 
 ## Usage
@@ -24,7 +24,7 @@ The `vc-curated-match` is an OpenDirectory skill that connects founders and open
 python scripts/run.py \
   --description "A Next.js template for enterprise B2B SaaS" \
   --url "https://trymylandingpage.com" \
-  --stage "Pre-Seed"
+  --stage "Pre-seed"
 ```
 
 ## Methodology

@@ -1,3 +1,4 @@
+---
 name: vc-curated-match
 description: Accepts a product description and URL to algorithmically identify relevant Venture Capital investors targeting exactly that stage, industry, and niche based on a curated static dataset.
 author: OpenDirectory

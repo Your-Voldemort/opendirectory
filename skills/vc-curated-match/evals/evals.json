@@ -36,7 +36,7 @@
         "geography": "India"
       },
       "expected_top_tags": ["FinTech", "Data", "E-commerce"],
-      "expected_top_funds": ["Lightspeed India", "Peak XV Partners", "Nexus Venture Partners"],
+      "expected_top_funds": ["Accel India", "Peak XV Partners", "Nexus Venture Partners"],
       "output_file": "evals/fintech-india-preseed.md"
     }
   ]
