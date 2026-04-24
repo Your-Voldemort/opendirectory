@@ -1,8 +1,7 @@
-"""Generate launch assets from a product brief.
+"""Generate a coordinated OSS launch strategy and asset bundle.
 
-This module renders a stable Markdown launch kit grounded in repo facts.
-It includes Show HN, Product Hunt, Reddit variants, Twitter/X, and a first-week
-community plan, while preserving explicit low-confidence warnings.
+This module acts as an orchestrator: it determines readiness, evaluates channel
+fitness, and provides strategic hooks and handoffs to specialized skills.
 """
 
 from __future__ import annotations
@@ -78,20 +77,6 @@ def _choose_show_hn_title(brief: dict[str, Any]) -> str:
     return candidates[-1]
 
 
-def _should_write_body(brief: dict[str, Any]) -> bool:
-    confidence = _clean(brief.get("confidence"))
-    proof_points = brief.get("key_proof_points") or []
-    features = brief.get("key_features") or []
-
-    if confidence == "low":
-        return False
-    if len(proof_points) < 2:
-        return False
-    if not features:
-        return False
-    return True
-
-
 def _intro_line(brief: dict[str, Any]) -> str:
     repo_name = _repo_slug(brief)
     summary = _canonical_summary(brief)
@@ -99,32 +84,6 @@ def _intro_line(brief: dict[str, Any]) -> str:
     if audience and audience != "unknown":
         return _shorten(f"I built {repo_name} because I wanted a clearer way to serve {audience} who need {summary.lower()}.", 220)
     return _shorten(f"I built {repo_name} because I wanted a clearer way to package {summary.lower()} as a launchable OSS project.", 220)
-
-
-def _core_explanation(brief: dict[str, Any]) -> str:
-    features = [_strip_markdown(feature) for feature in (brief.get("key_features") or [])[:3]]
-    proof_points = brief.get("key_proof_points") or []
-    lines: list[str] = []
-    if features:
-        lines.append("The launch kit focuses on " + ", ".join(features) + ".")
-    if proof_points:
-        lines.append("I grounded the copy in repo signals like " + "; ".join(proof_points[:3]) + ".")
-    if not lines:
-        lines.append("I kept the draft anchored to the repo README and GitHub metadata.")
-    return " ".join(lines)
-
-
-def _feedback_ask(brief: dict[str, Any]) -> str:
-    assumptions = brief.get("assumptions") or []
-    if assumptions:
-        return _shorten(
-            "If the README is too thin or the audience is off, I’d especially appreciate feedback on the framing and where the launch copy feels too broad.",
-            220,
-        )
-    return _shorten(
-        "Happy to hear whether the framing feels accurate and what launch angle you’d expect from a repo like this.",
-        220,
-    )
 
 
 def _low_confidence_note(brief: dict[str, Any]) -> str:
@@ -207,11 +166,6 @@ def _render_low_confidence_note(brief: dict[str, Any]) -> str:
     return note
 
 
-def _is_open_source(brief: dict[str, Any]) -> bool:
-    links = brief.get("links") or {}
-    return bool(_clean(links.get("repo")))
-
-
 def _tagline_candidates(brief: dict[str, Any]) -> list[str]:
     summary = _canonical_summary(brief)
     audience = _strip_markdown(brief.get("audience"))
@@ -258,86 +212,6 @@ def _pick_tagline(brief: dict[str, Any]) -> str:
         return candidates[0]
     fallback = _strip_markdown(brief.get("value_proposition")) or "Launch copy grounded in repo facts"
     return _shorten(fallback, 60)
-
-
-def _ph_description(brief: dict[str, Any]) -> str:
-    summary = _canonical_summary(brief)
-    audience = _strip_markdown(brief.get("audience"))
-    features = [_strip_markdown(feature) for feature in (brief.get("key_features") or [])[:2]]
-    problem = _strip_markdown(brief.get("problem_solved"))
-    value_prop = _strip_markdown(brief.get("value_proposition"))
-    edit_note = _low_confidence_edit_note() if _is_low_confidence(brief) else ""
-    open_source_phrase = "Open source and self-hostable." if brief.get("links", {}).get("repo") else ""
-
-    parts = []
-    audience_label = audience if audience != 'unknown' else 'OSS maintainers'
-    if problem and value_prop:
-        parts.append(_shorten(f"For {audience_label}, it frames {problem.lower()} around {value_prop.lower()}.", 180))
-    elif problem:
-        parts.append(_shorten(f"For {audience_label}, it turns {problem.lower()} into launch copy.", 180))
-    elif audience and audience != 'unknown':
-        parts.append(_shorten(f"Built for {audience_label} who need launch copy grounded in repo facts.", 180))
-    else:
-        parts.append("Built for OSS maintainers who want launch copy grounded in repo facts.")
-
-    if features and not _is_low_confidence(brief):
-        parts.append("Uses signals like " + ", ".join(features) + ".")
-    elif features:
-        parts.append("Grounded in repo signals, not invented claims.")
-    if open_source_phrase:
-        parts.append(open_source_phrase)
-    if edit_note:
-        parts.append(edit_note)
-
-    description = " ".join(part for part in parts if part)
-    return _shorten(description, 320 if _is_low_confidence(brief) else 500)
-
-
-def _maker_comment(brief: dict[str, Any]) -> str:
-    repo_name = _repo_slug(brief)
-    summary = _canonical_summary(brief)
-    audience = _strip_markdown(brief.get("audience"))
-    features = [_strip_markdown(feature) for feature in (brief.get("key_features") or [])[:3]]
-    proof_points = brief.get("key_proof_points") or []
-    assumptions = brief.get("assumptions") or []
-    links = brief.get("links") or {}
-
-    paragraphs = [
-        _shorten(
-            f"I built {repo_name} because I kept seeing open-source projects with good code but weak launch copy. The repo had enough signal to explain itself, but not enough structure to turn that signal into something launch-ready.",
-            420,
-        ),
-        _shorten(
-            f"This version starts from a GitHub repo URL, pulls the README and repository metadata, and then drafts channel-specific launch assets. For Product Hunt, that means a short tagline, a concise description, and a maker comment that stays tied to the repo rather than turning into generic marketing.",
-            420,
-        ),
-        _shorten(
-            f"I’m aiming this at {audience if audience != 'unknown' else 'OSS maintainers'} who want a practical launch package without making up traction or polishing the repo into something it is not. The current focus is {summary.lower()}, with the copy grounded in {', '.join(features) if features else 'README content and metadata' }.",
-            420,
-        ),
-        _shorten(
-            f"What it does not do yet: it does not post anywhere, it does not scrape private sources, and it does not invent proof points. If the README is thin, the output will say so instead of filling gaps with fluff.",
-            420,
-        ),
-        _shorten(
-            f"I’d love feedback on whether the framing feels honest and whether the launch copy stays useful when the repo is strong versus when the README is sparse. {('Repo: ' + links.get('repo')) if links.get('repo') else ''}",
-            420,
-        ),
-    ]
-
-    if proof_points:
-        paragraphs.insert(
-            2,
-            _shorten(
-                "I grounded the draft in repo signals like " + "; ".join(proof_points[:3]) + ".",
-                420,
-            ),
-        )
-
-    if assumptions:
-        paragraphs.append("Low-confidence areas: " + "; ".join(assumptions[:3]) + ".")
-
-    return "\n\n".join(paragraphs)
 
 
 def _reddit_subreddit_candidates(brief: dict[str, Any]) -> list[tuple[str, str]]:
@@ -404,144 +278,6 @@ def _reddit_subreddit_candidates(brief: dict[str, Any]) -> list[tuple[str, str]]
     return deduped
 
 
-def _reddit_body_for_context(brief: dict[str, Any], subreddit: str, context: str) -> str:
-    repo_name = _repo_slug(brief)
-    summary = _canonical_summary(brief)
-    audience = _strip_markdown(brief.get("audience"))
-    features = [_strip_markdown(feature) for feature in (brief.get("key_features") or [])[:3]]
-    proof_points = brief.get("key_proof_points") or []
-    low_conf = _is_low_confidence(brief)
-    lead_feature = features[0] if features else summary
-    secondary = features[1] if len(features) > 1 else "README details"
-
-    opener = f"I built {repo_name}"
-    if audience and audience != "unknown":
-        opener += f" for {audience}"
-    opener += f" because {summary.lower()}"
-
-    if low_conf:
-        lines = [
-            f"I built {repo_name} and wanted to see if the repo story reads clearly from the README alone.",
-            f"Posting this in {context} for feedback, with no extra claims attached.",
-        ]
-        if features:
-            lines.append(f"The only concrete signal I’m leaning on is {lead_feature}.")
-        lines.append("I built this myself and will only post where the subreddit rules allow self-promo.")
-        lines.append(_low_confidence_edit_note())
-        return "\n\n".join(lines)
-
-    if subreddit.lower() == "r/devtools":
-        lines = [
-            f"{opener} and I wanted a cleaner way to turn repo facts into launch copy.",
-            f"This angle fits {context}; I’m sharing it for feedback on the workflow, not as a promo blast.",
-            f"The main angle here is {lead_feature}, with {secondary} as supporting context.",
-        ]
-    elif subreddit.lower() == "r/opensource":
-        lines = [
-            f"{opener} and I think the interesting part is the launch workflow, not the code itself.",
-            f"I’m posting in {context} because it’s an OSS launch question first and a product post second.",
-            f"The repo signals I leaned on were {', '.join(features) if features else 'README text and metadata'}.",
-        ]
-    elif subreddit.lower() == "r/programming":
-        lines = [
-            f"{opener}, and the challenge was keeping the launch copy specific without turning it into jargon.",
-            f"For {context}, I’d mainly want feedback on whether the problem/solution framing is actually useful to builders.",
-            f"The repo cues I used were {lead_feature} and {secondary}.",
-        ]
-    elif subreddit.lower() == "r/SideProject":
-        lines = [
-            f"{opener} as a side project I wanted to package more clearly.",
-            f"I’m sharing this in {context} to compare launch framing, not to spam the thread.",
-            f"The most concrete cues were {lead_feature} and {secondary}.",
-        ]
-    else:
-        lines = [
-            opener + ".",
-            f"This is a fit for {context}; I’m sharing it here to get feedback, not to spam the subreddit.",
-            f"It focuses on {', '.join(features) if features else 'the repo metadata and README'}.",
-        ]
-
-    if proof_points:
-        lines.append("Grounded in repo facts like " + "; ".join(proof_points[:2]) + ".")
-    lines.append("I built this myself and will only post where the subreddit rules allow self-promo.")
-    if subreddit.lower() == "r/opensource":
-        lines.append(f"Curious whether this framing would land with {context}.")
-    elif subreddit.lower() == "r/SideProject":
-        lines.append(f"Happy to hear if the angle feels too broad or too narrow for {context}.")
-    elif subreddit.lower() in {"r/programming", "r/devtools"}:
-        lines.append(f"Would this problem/solution framing feel useful to builders in {context}?")
-    else:
-        lines.append(f"If this fits the community, I’d appreciate feedback on the launch angle and any missing context.")
-    return "\n\n".join(lines)
-
-
-def generate_reddit_posts(brief: dict[str, Any]) -> list[dict[str, str]]:
-    posts = []
-    for subreddit, context in _reddit_subreddit_candidates(brief):
-        posts.append(
-            {
-                "subreddit": subreddit,
-                "context": context,
-                "body": _reddit_body_for_context(brief, subreddit, context),
-            }
-        )
-    return posts
-
-
-def _twitter_thread_tweets(brief: dict[str, Any]) -> list[str]:
-    repo_name = _repo_slug(brief)
-    summary = _canonical_summary(brief)
-    audience = _strip_markdown(brief.get("audience"))
-    features = [_strip_markdown(feature) for feature in (brief.get("key_features") or [])[:3]]
-    proof_points = brief.get("key_proof_points") or []
-    repo_link = _clean((brief.get("links") or {}).get("repo"))
-    low_conf = _is_low_confidence(brief)
-    lead_feature = features[0] if features else summary
-    secondary = features[1] if len(features) > 1 else "README and metadata"
-
-    if low_conf:
-        return [
-            f"{repo_name} is still a draftable idea, but the repo context is too thin to write a confident launch thread.",
-            "The safe move is to keep the copy short and avoid claims the README doesn’t support.",
-            f"This version stays tied to README + GitHub metadata and tells you to edit before posting. Repo: {repo_link or 'add the repo link'}.",
-        ]
-
-    return [
-        f"The launch story for {repo_name} should start with {summary.lower()}, not the implementation details.",
-        f"The hard part isn’t the code; it’s explaining why {lead_feature.lower()} matters to the right audience.",
-        f"This kit turns the repo’s own signals into a tighter launch story without inventing traction.",
-        f"It reads the README + GitHub metadata, then drafts Show HN, Product Hunt, Reddit, and X posts that stay close to the repo. The supporting detail I’d foreground is {secondary.lower()}." + (" Evidence comes from " + "; ".join(proof_points[:2]) + "." if proof_points else ""),
-        f"Feedback welcome on the repo angle: {repo_link or 'add the repo link before posting'}",
-    ]
-
-
-def generate_twitter_thread(brief: dict[str, Any]) -> list[dict[str, str]]:
-    tweets = _twitter_thread_tweets(brief)
-    return [{"tweet": tweet, "label": f"Tweet {index + 1}"} for index, tweet in enumerate(tweets)]
-
-
-def _week_plan_items(brief: dict[str, Any]) -> list[tuple[str, str]]:
-    repo_name = _repo_slug(brief)
-    audience = _strip_markdown(brief.get("audience"))
-    summary = _canonical_summary(brief)
-    repo_link = _clean((brief.get("links") or {}).get("repo"))
-    low_conf = _is_low_confidence(brief)
-
-    items = [
-        ("Day 0", f"Prep the launch copy, verify links, and trim anything that sounds generic for {repo_name} before posting."),
-        ("Launch day", f"Post the Show HN draft, Product Hunt draft, 5 Reddit variants, and the X thread. Keep replies factual and point people to {repo_link or 'the repo'}."),
-        ("Day 1-2", f"Respond to feedback, update the README if commenters point out missing context, and tighten the launch framing around {summary.lower()} for {audience if audience != 'unknown' else 'the intended audience'}."),
-        ("Day 3-7", "Publish a short follow-up post or changelog note, answer questions in communities where you posted, and reuse useful feedback to improve docs, examples, or onboarding."),
-    ]
-    if low_conf:
-        items.append(("Note", _low_confidence_edit_note()))
-    return items
-
-
-def generate_first_week_plan(brief: dict[str, Any]) -> list[dict[str, str]]:
-    return [{"day": day, "plan": plan} for day, plan in _week_plan_items(brief)]
-
-
 def generate_product_hunt(brief: dict[str, Any]) -> dict[str, str]:
     """Generate Product Hunt assets from a grounded brief."""
 
@@ -594,158 +330,188 @@ def generate_product_hunt(brief: dict[str, Any]) -> dict[str, str]:
     }
 
 
-def _body_from_brief(brief: dict[str, Any]) -> str:
-    intro = _intro_line(brief)
-    core = _core_explanation(brief)
-    ask = _feedback_ask(brief)
-    confidence = _low_confidence_note(brief)
+def render_channel_strategy(brief: dict[str, Any]) -> str:
+    """Render concise channel strategy with hooks and handoffs."""
+    fitness = brief.get("channel_fitness") or {}
+    type_ = brief.get("project_type") or "project"
+    repo_name = _repo_slug(brief)
+    summary = _canonical_summary(brief)
+    
+    sections = ["## Channel Strategy & Positioning"]
+    
+    # Show HN
+    if fitness.get("show_hn") != "low":
+        title = _choose_show_hn_title(brief)
+        hook = _intro_line(brief)
+        sections.append(f"### [Show HN] - Fit: {fitness.get('show_hn', '').upper()}")
+        sections.append(f"**Positioning**: Focus on technical implementation and 'why I built this'.")
+        sections.append(f"**Recommended Title**: `{title}`")
+        sections.append(f"**Hook**: {hook}")
+        sections.append("> [!TIP]\n> Use `show-hn-writer` for a full submission draft.")
+        sections.append("")
 
-    return "\n\n".join(
-        [
-            intro,
-            core,
-            ask,
-            confidence,
+    # Product Hunt
+    if fitness.get("product_hunt") != "low":
+        ph = generate_product_hunt(brief)
+        sections.append(f"### [Product Hunt] - Fit: {fitness.get('product_hunt', '').upper()}")
+        sections.append(f"**Positioning**: Highlight the {type_}'s utility for the broader maker community.")
+        sections.append(f"**Tagline**: {ph['tagline']}")
+        sections.append(f"**Brief**: {ph['description']}")
+        sections.append("> [!TIP]\n> Use `producthunt-launch-kit` for full asset generation (badges, images).")
+        sections.append("")
+        
+    # Reddit
+    if fitness.get("reddit") != "low":
+        candidates = _reddit_subreddit_candidates(brief)
+        sections.append(f"### [Reddit] - Fit: {fitness.get('reddit', '').upper()}")
+        sections.append(f"**Niche Strategy**: Engage {', '.join(c[0] for c in candidates[:3])} with feedback-first posts.")
+        sections.append(f"**Key Hook**: {summary}")
+        sections.append("> [!TIP]\n> Use `reddit-post-engine` to generate subreddit-specific variants.")
+        sections.append("")
+
+    # Twitter/X
+    sections.append(f"### [Twitter/X] - Fit: HIGH")
+    sections.append(f"**Thread Strategy**: Start with the problem of {brief.get('problem_solved', 'the current niche')}.")
+    sections.append(f"**Hook**: I built `{repo_name}` to solve {summary.lower()}.")
+    sections.append("> [!TIP]\n> Use `tweet-thread-from-blog` or `linkedin-post-generator` to expand this hook.")
+    
+    return "\n".join(sections)
+
+
+def render_readiness_fix_plan(brief: dict[str, Any]) -> str:
+    """Render a checklist-style fix plan for unready repositories."""
+    readiness_obj = brief.get("launch_readiness") or {}
+    if not isinstance(readiness_obj, dict) or not readiness_obj.get("fix_plan"):
+        return ""
+    
+    score = readiness_obj.get("score", "low").upper()
+    sections = [
+        "## Launch Readiness Fix Plan",
+        f"The project is currently at **{score}** readiness. Resolve these issues before an aggressive public launch:",
+        ""
+    ]
+    
+    for item in readiness_obj["fix_plan"]:
+        severity = f"({item['severity'].capitalize()} impact)"
+        sections.append(f"- [ ] {item['suggested_fix']} {severity}")
+        sections.append(f"  - **Why**: {item['reason']}")
+        sections.append(f"  - **Likely file(s)**: {', '.join(f'`{f}`' for f in item['likely_files'])}")
+        sections.append("")
+        
+    return "\n".join(sections)
+
+
+def _generate_fitness_explanation(brief: dict[str, Any]) -> str:
+    fitness = brief.get("channel_fitness") or {}
+    type_ = brief.get("project_type") or "project"
+    readiness_obj = brief.get("launch_readiness") or {}
+    readiness_score = readiness_obj.get("score", "medium") if isinstance(readiness_obj, dict) else readiness_obj
+    
+    lines = [f"This is identified as a **{type_}** with **{readiness_score.capitalize()} Launch Readiness**."]
+    
+    if fitness.get("show_hn") == "high":
+        lines.append("- **Show HN**: High fit. Technical communities appreciate technical tools and libraries.")
+    elif fitness.get("show_hn") == "low":
+        lines.append("- **Show HN**: Not recommended yet. Repository context might be too thin for Hacker News.")
+        
+    if fitness.get("product_hunt") == "high":
+        lines.append("- **Product Hunt**: High fit. Polished apps and frameworks perform well here.")
+    elif fitness.get("product_hunt") == "low":
+        lines.append("- **Product Hunt**: Not recommended yet. Pure libraries or early-stage tools often struggle on PH without a UI/Demo.")
+
+    if fitness.get("reddit") == "high":
+        lines.append("- **Reddit**: High fit. Community-driven feedback is ideal for this project.")
+    elif fitness.get("reddit") == "low" and readiness_score == "low":
+        lines.append("- **Reddit**: OK for feedback only. Avoid a 'launch' post; ask for specific technical reviews instead.")
+        
+    return "\n".join(lines)
+
+
+def generate_launch_strategy(brief: dict[str, Any]) -> dict[str, Any]:
+    fitness = brief.get("channel_fitness") or {}
+    readiness_obj = brief.get("launch_readiness") or {}
+    readiness_score = readiness_obj.get("score", "medium") if isinstance(readiness_obj, dict) else readiness_obj
+    
+    # Simple recommendation logic
+    recommended = [k for k, v in fitness.items() if v == "high"]
+    if not recommended:
+        recommended = [k for k, v in fitness.items() if v == "medium"]
+    
+    # Timeline coordination
+    if readiness_score == "low":
+        sequence = [
+            "Phase 0: Readiness Fixes (Complete the checklist below)",
+            "Day 1-3: Documentation Sprint (Fix README, add examples)",
+            "Day 4+: Re-evaluate for Show HN/PH once fundamentals are robust"
         ]
-    )
-
-
-def generate_show_hn(brief: dict[str, Any]) -> dict[str, str]:
-    """Generate Show HN title and optional body from a grounded brief."""
-
-    title = _choose_show_hn_title(brief)
-    body = _body_from_brief(brief) if _should_write_body(brief) else ""
-    return {
-        "title": title,
-        "body": body,
-    }
-
-
-def render_show_hn_markdown(brief: dict[str, Any]) -> str:
-    """Render a stable Markdown Show HN draft."""
-
-    show_hn = generate_show_hn(brief)
-    title = show_hn["title"]
-    body = show_hn["body"]
-
-    sections = [
-        "# Show HN Draft",
-        "",
-        "## Title",
-        title,
-        "",
-        "## Short Intro",
-        _intro_line(brief) if body else "Low-confidence repo context. Title-only draft recommended.",
-        "",
-        "## Core Explanation",
-        _core_explanation(brief) if body else "Not enough README signal to write a reliable body.",
-        "",
-        "## Feedback Ask",
-        _feedback_ask(brief) if body else "Please review the repo framing and README quality before posting.",
-        "",
-        "## Notes",
-        _low_confidence_note(brief),
-    ]
-    return "\n".join(sections).rstrip() + "\n"
-
-
-def render_product_hunt_markdown(brief: dict[str, Any]) -> str:
-    """Render a stable Markdown Product Hunt draft."""
-
-    ph = generate_product_hunt(brief)
-    sections = [
-        "# Product Hunt Draft",
-        "",
-        "## Tagline",
-        ph["tagline"],
-        "",
-        "## Description",
-        ph["description"],
-        "",
-        "## Maker Comment",
-        ph["maker_comment"],
-        "",
-        "## Notes",
-        _low_confidence_note(brief),
-    ]
-    return "\n".join(sections).rstrip() + "\n"
-
-
-def generate_assets(brief: dict[str, Any]) -> dict[str, Any]:
-    """Generate the first supported channel assets for oss-launch-kit."""
+    elif readiness_score == "medium":
+        sequence = [
+            "Phase 0: Polish Core Docs (Quickstart & Examples)",
+            "Step 1: Soft Launch (Internal beta, small Discord niche, existing users)",
+            "Step 2: Collect & Address initial feedback",
+            "Step 3: Re-readiness check before Product Hunt"
+        ]
+    elif fitness.get("show_hn") == "high":
+        sequence = ["Day 1: Show HN", "Day 3: Reddit", "Day 5: Product Hunt"]
+    else:
+        sequence = ["Day 1: Twitter/X Soft Launch", "Day 3: Reddit", "Day 7: Show HN (if feedback is good)"]
 
     return {
-        "show_hn": generate_show_hn(brief),
-        "product_hunt": generate_product_hunt(brief),
-        "reddit": generate_reddit_posts(brief),
-        "twitter_x": generate_twitter_thread(brief),
-        "first_week_plan": generate_first_week_plan(brief),
-        "markdown": render_show_hn_markdown(brief) + "\n" + render_product_hunt_markdown(brief),
+        "explanation": _generate_fitness_explanation(brief),
+        "recommended_channels": recommended,
+        "timeline": sequence
     }
-
-
-def render_reddit_markdown(brief: dict[str, Any]) -> str:
-    posts = generate_reddit_posts(brief)
-    sections = ["# Reddit Drafts", ""]
-    for index, post in enumerate(posts, start=1):
-        sections.extend(
-            [
-                f"## Variant {index}",
-                f"Subreddit: {post['subreddit']} ({post['context']})",
-                "",
-                post["body"],
-                "",
-            ]
-        )
-    sections.extend(["## Notes", _render_low_confidence_note(brief)])
-    return "\n".join(sections).rstrip() + "\n"
-
-
-def render_twitter_markdown(brief: dict[str, Any]) -> str:
-    tweets = generate_twitter_thread(brief)
-    sections = ["# Twitter/X Thread", ""]
-    for tweet in tweets:
-        sections.extend([f"## {tweet['label']}", tweet["tweet"], ""])
-    sections.extend(["## Notes", _render_low_confidence_note(brief)])
-    return "\n".join(sections).rstrip() + "\n"
-
-
-def render_first_week_plan_markdown(brief: dict[str, Any]) -> str:
-    items = generate_first_week_plan(brief)
-    sections = ["# First-Week Launch Plan", ""]
-    for item in items:
-        sections.extend([f"## {item['day']}", item["plan"], ""])
-    sections.extend(["## Notes", _render_low_confidence_note(brief)])
-    return "\n".join(sections).rstrip() + "\n"
 
 
 def render_full_launch_kit_markdown(brief: dict[str, Any]) -> str:
     repo_name = _repo_slug(brief)
-    summary = _canonical_summary(brief)
-    audience = _strip_markdown(brief.get("audience"))
-    header_lines = [
-        "# Launch Kit",
-        "",
-        "## Repo Summary",
-        repo_name,
-        "",
-        "## Audience",
-        audience if audience and audience != "unknown" else "Unknown from available repo context",
-        "",
-        "## Description",
-        summary,
-        "",
-    ]
+    strategy = generate_launch_strategy(brief)
+    readiness_obj = brief.get("launch_readiness") or {}
+    score = readiness_obj.get("score", "medium") if isinstance(readiness_obj, dict) else readiness_obj
+    
     sections = [
-        "\n".join(header_lines).rstrip(),
-        render_show_hn_markdown(brief).rstrip(),
-        render_product_hunt_markdown(brief).rstrip(),
-        render_reddit_markdown(brief).rstrip(),
-        render_twitter_markdown(brief).rstrip(),
-        render_first_week_plan_markdown(brief).rstrip(),
-        "# Assumptions / Low-Confidence Notes",
-        _render_low_confidence_note(brief),
+        f"# Launch Orchestrator for {repo_name}",
+        "",
+        "## Executive Summary & Launch Readiness",
+        f"**Project Maturity**: {score.upper()}",
     ]
+    
+    if score == "low":
+        sections.append("\n> [!CAUTION]")
+        sections.append("> **This project is not launch-ready yet.** Fix the fundamental issues in the readiness plan below before running a public launch.")
+        sections.append("")
+        sections.append(render_readiness_fix_plan(brief))
+    elif score == "medium":
+        sections.append("\n## Soft Launch Strategy")
+        sections.append("- Start with existing community channels, small newsletter segments, or internal users.")
+        sections.append("- Avoid high-friction 'loud' launches until the core documentation gaps below are filled.")
+        sections.append("")
+        sections.append(render_readiness_fix_plan(brief))
+        sections.append("")
+        sections.append("## Coordinated Launch Timeline")
+        sections.append("\n".join(f"- [ ] {step}" for step in strategy["timeline"]))
+        sections.append("")
+        sections.append("## Suggested Skills (Post-Fix)")
+        sections.append("> [!TIP]\n> Once fixes are complete, use `producthunt-launch-kit` for full asset generation.")
+        sections.append("> [!TIP]\n> For a technical deep-dive once documentation is robust, use `show-hn-writer`.")
+    else:
+        # High readiness
+        sections.append("")
+        sections.append("## Coordinated Launch Timeline")
+        sections.append("\n".join(f"- [ ] {step}" for step in strategy["timeline"]))
+        sections.append("")
+        sections.append(strategy["explanation"])
+        sections.append("")
+        sections.append(render_readiness_fix_plan(brief))
+        sections.append("")
+        sections.append(render_channel_strategy(brief))
+
+    sections.extend([
+        "",
+        "## Full Confidence Notes & Assumptions",
+        _render_low_confidence_note(brief),
+    ])
+    
     return "\n\n".join(sections).rstrip() + "\n"
 
 
@@ -756,7 +522,7 @@ def main() -> None:
     with open(sys.argv[1], "r", encoding="utf-8") as handle:
         brief = json.load(handle)
 
-    print(generate_assets(brief)["markdown"])
+    print(render_full_launch_kit_markdown(brief))
 
 
 if __name__ == "__main__":

@@ -1,152 +1,49 @@
-# Launch Kit
+# Launch Orchestrator for cli/cli
 
-## Repo Summary
-cli/cli
 
-## Audience
-data/infra users
 
-## Description
-GitHub?s official command line tool
+## Executive Summary & Launch Readiness
 
-# Show HN Draft
+**Project Maturity**: HIGH
 
-## Title
-Show HN: cli/cli - GitHub?s official command line tool
 
-## Short Intro
-Low-confidence repo context. Title-only draft recommended.
 
-## Core Explanation
-Not enough README signal to write a reliable body.
+## Coordinated Launch Timeline
 
-## Feedback Ask
-Please review the repo framing and README quality before posting.
+- [ ] Day 1: Show HN
+- [ ] Day 3: Reddit
+- [ ] Day 5: Product Hunt
 
-## Notes
-- Confidence: high
 
-# Product Hunt Draft
 
-## Tagline
-cli/cli: tool for data/infra users
+This is identified as a **tool** with **High Launch Readiness**.
+- **Show HN**: High fit. Technical communities appreciate technical tools and libraries.
+- **Product Hunt**: Not recommended yet. Pure libraries or early-stage tools often struggle on PH without a UI/Demo.
 
-## Description
-Built for data/infra users. Keeps the pitch grounded in repo facts.
 
-## Maker Comment
-Draft only. Edit before posting.
 
-## Notes
-- Confidence: high
+## Channel Strategy & Positioning
+### [Show HN] - Fit: HIGH
+**Positioning**: Focus on technical implementation and 'why I built this'.
+**Recommended Title**: `Show HN: cli/cli - GitHub’s official command line tool`
+**Hook**: I built cli/cli because I wanted a clearer way to serve data/infra users who need github’s official command line tool.
+> [!TIP]
+> Use `show-hn-writer` for a full submission draft.
 
-# Reddit Drafts
+### [Reddit] - Fit: MEDIUM
+**Niche Strategy**: Engage r/devtools, r/opensource, r/commandline with feedback-first posts.
+**Key Hook**: GitHub’s official command line tool
+> [!TIP]
+> Use `reddit-post-engine` to generate subreddit-specific variants.
 
-## Variant 1
-Subreddit: r/devtools (developer tools audience)
+### [Twitter/X] - Fit: HIGH
+**Thread Strategy**: Start with the problem of GitHub’s official command line tool.
+**Hook**: I built `cli/cli` to solve github’s official command line tool.
+> [!TIP]
+> Use `tweet-thread-from-blog` or `linkedin-post-generator` to expand this hook.
 
-I built cli/cli for data/infra users because github?s official command line tool and I wanted a cleaner way to turn repo facts into launch copy.
 
-This angle fits developer tools audience; I’m sharing it for feedback on the workflow, not as a promo blast.
 
-The main angle here is GitHub?s official command line tool, with README details as supporting context.
-
-I built this myself and will only post where the subreddit rules allow self-promo.
-
-Would this problem/solution framing feel useful to builders in developer tools audience?
-
-## Variant 2
-Subreddit: r/opensource (open-source launch context)
-
-I built cli/cli for data/infra users because github?s official command line tool and I think the interesting part is the launch workflow, not the code itself.
-
-I’m posting in open-source launch context because it’s an OSS launch question first and a product post second.
-
-The repo signals I leaned on were README text and metadata.
-
-I built this myself and will only post where the subreddit rules allow self-promo.
-
-Curious whether this framing would land with open-source launch context.
-
-## Variant 3
-Subreddit: r/commandline (command-line users)
-
-I built cli/cli for data/infra users because github?s official command line tool.
-
-This is a fit for command-line users; I’m sharing it here to get feedback, not to spam the subreddit.
-
-It focuses on the repo metadata and README.
-
-I built this myself and will only post where the subreddit rules allow self-promo.
-
-If this fits the community, I’d appreciate feedback on the launch angle and any missing context.
-
-## Variant 4
-Subreddit: r/devops (devops / infrastructure audience)
-
-I built cli/cli for data/infra users because github?s official command line tool.
-
-This is a fit for devops / infrastructure audience; I’m sharing it here to get feedback, not to spam the subreddit.
-
-It focuses on the repo metadata and README.
-
-I built this myself and will only post where the subreddit rules allow self-promo.
-
-If this fits the community, I’d appreciate feedback on the launch angle and any missing context.
-
-## Variant 5
-Subreddit: r/SideProject (general maker context)
-
-I built cli/cli for data/infra users because github?s official command line tool.
-
-This is a fit for general maker context; I’m sharing it here to get feedback, not to spam the subreddit.
-
-It focuses on the repo metadata and README.
-
-I built this myself and will only post where the subreddit rules allow self-promo.
-
-If this fits the community, I’d appreciate feedback on the launch angle and any missing context.
-
-## Notes
-- Confidence: high
-
-# Twitter/X Thread
-
-## Tweet 1
-The launch story for cli/cli should start with github?s official command line tool, not the implementation details.
-
-## Tweet 2
-The hard part isn’t the code; it’s explaining why github?s official command line tool matters to the right audience.
-
-## Tweet 3
-This kit turns the repo’s own signals into a tighter launch story without inventing traction.
-
-## Tweet 4
-It reads the README + GitHub metadata, then drafts Show HN, Product Hunt, Reddit, and X posts that stay close to the repo. The supporting detail I’d foreground is readme and metadata.
-
-## Tweet 5
-Feedback welcome on the repo angle: add the repo link before posting
-
-## Notes
-- Confidence: high
-
-# First-Week Launch Plan
-
-## Day 0
-Prep the launch copy, verify links, and trim anything that sounds generic for cli/cli before posting.
-
-## Launch day
-Post the Show HN draft, Product Hunt draft, 5 Reddit variants, and the X thread. Keep replies factual and point people to the repo.
-
-## Day 1-2
-Respond to feedback, update the README if commenters point out missing context, and tighten the launch framing around github?s official command line tool for data/infra users.
-
-## Day 3-7
-Publish a short follow-up post or changelog note, answer questions in communities where you posted, and reuse useful feedback to improve docs, examples, or onboarding.
-
-## Notes
-- Confidence: high
-
-# Assumptions / Low-Confidence Notes
+## Full Confidence Notes & Assumptions
 
 - Confidence: high

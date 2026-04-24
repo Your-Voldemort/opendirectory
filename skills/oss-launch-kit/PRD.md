@@ -4,14 +4,14 @@
 `oss-launch-kit` is an advanced OpenDirectory skill that turns a public GitHub repo URL into a grounded launch package for open-source projects.
 
 The v1 output is a single Markdown document containing:
-- repo summary
-- messaging brief
-- Show HN draft
-- Product Hunt draft
-- 5 Reddit post variants
+- executive summary & launch readiness
+- channel orchestration (where to launch & why)
+- coordinated launch timeline
+- Show HN draft (conditionally included)
+- Product Hunt draft (conditionally included)
+- 5 Reddit post variants (focus on feedback for weak repos)
 - Twitter/X thread
-- first-week community engagement plan
-- assumptions / low-confidence areas
+- full confidence notes & assumptions
 
 ## Problem Statement
 Open-source maintainers often know how to build and ship the product, but not how to package it for launch. The hardest part is not writing generic marketing copy; it is translating a repo’s real signal into channel-specific content that is honest, specific, and usable.
@@ -40,10 +40,12 @@ The closed `api-error-to-faq-builder` idea tried to infer support content from n
 That makes the challenge more mergeable and easier to validate.
 
 ## Goals
-- Generate grounded launch assets from GitHub repo metadata and README.
-- Be useful without posting to external platforms.
+- Analyze repo context to determine appropriate launch channels and project maturity.
+- Generate grounded, channel-aware launch assets.
+- Provide a coordinated, day-by-day launch strategy.
 - Minimize hallucinations and unsupported claims.
 - Produce output that is directly usable for OSS launches.
+- Explicitly flag low-confidence areas when the README or metadata is sparse.
 
 ## Non-Goals
 - No direct posting to Product Hunt, Reddit, HN, or X.
@@ -76,15 +78,15 @@ That makes the challenge more mergeable and easier to validate.
 The output must be a single Markdown document with stable headings.
 
 ### Required structure
-1. `# OSS Launch Kit for <repo>`
-2. `## Repo Summary`
-3. `## Messaging Brief`
-4. `## Show HN Draft`
-5. `## Product Hunt Draft`
-6. `## Reddit Drafts`
-7. `## Twitter/X Thread`
-8. `## First-Week Launch Plan`
-9. `## Assumptions / Low-Confidence Areas`
+1. `# Launch Strategy for <repo>`
+2. `## Executive Summary & Launch Readiness`
+3. `## Channel Orchestration (Where to launch & Why)`
+4. `## Coordinated Launch Timeline`
+5. `## Show HN Draft` (Conditional)
+6. `## Product Hunt Draft` (Conditional)
+7. `## Reddit Drafts`
+8. `## Twitter/X Thread`
+9. `## Full Confidence Notes & Assumptions`
 
 ### Content expectations
 - Repo summary should cite only verified repo facts.

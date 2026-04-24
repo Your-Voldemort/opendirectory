@@ -14,7 +14,7 @@ from generate_assets import render_full_launch_kit_markdown
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(description="Generate an OSS launch kit Show HN draft from a GitHub repo URL.")
+    parser = argparse.ArgumentParser(description="Generate a coordinated OSS launch strategy and readiness report from a GitHub repo.")
     parser.add_argument("--repo-url", required=True, help="Public GitHub repository URL")
     parser.add_argument("--output", default="launch-kit.md", help="Output Markdown file path")
     return parser
