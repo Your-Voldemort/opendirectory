@@ -48,6 +48,7 @@ OpenDirectory is a central library that allows you to add new capabilities, or s
 | [`meeting-brief-generator`](skills/meeting-brief-generator) | Takes a company name and optional contact, runs targeted research via Tavily, synthesizes a 1-page pre-call brief with Gemini, and optionally saves... | `1.0.0` |
 | [`meta-ads-skill`](skills/meta-ads-skill) | Use when interacting with the Meta Ads MCP server to manage accounts, campaigns, ads, insights, and targeting, or to troubleshoot OAuth token authe... | `0.0.1` |
 | [`newsletter-digest`](skills/newsletter-digest) | Aggregates RSS feeds from the past week, synthesizes the top stories using Gemini, and publishes a newsletter digest to Ghost CMS. | `1.0.0` |
+| [`noise-to-linkedin-carousel`](skills/noise-to-linkedin-carousel) | Transforms messy, unstructured source material (transcripts, rough notes, etc. | `1.0.0` |
 | [`noise2blog`](skills/noise2blog) | Turns rough notes, bullet points, voice transcripts, or tweet dumps into a polished, publication-ready blog post. | `1.0.0` |
 | [`npm-downloads-to-leads`](skills/npm-downloads-to-leads) | Takes a list of npm package names (yours or competitors'), fetches 12 weeks of daily download data from the npm API, computes a breakout velocity s... | `0.0.1` |
 | [`oss-launch-kit`](skills/oss-launch-kit) | Higher-level OSS launch orchestrator that analyzes repos, selects channels, and coordinates launch plans. | `0.2.0` |
