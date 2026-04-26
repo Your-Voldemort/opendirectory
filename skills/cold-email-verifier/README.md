@@ -4,6 +4,9 @@ Agent Skill that equips your AI agent with the ability to autonomously guess, en
 
 Instead of running Python scripts manually, this skill teaches your AI how to read your lead lists, discover corporate domains via the Clearbit API, generate standard email permutations, and securely verify them.
 
+<img width="2752" height="1536" alt="cold-email-verifier-cover-image" src="https://github.com/user-attachments/assets/f033ec61-d2c1-4cee-a6d5-71e7cf9632a6" />
+
+
 ## Install
 
 ```bash
