@@ -85,11 +85,11 @@ State: "Extracted signals from X posts across Y companies."
 
 ---
 
-## Step 4: Score with Gemini
+## Step 4: Score with the LLM
 
 Read `references/scoring-rubric.md` for the full scoring model.
 
-Build the Gemini request:
+Build the LLM request:
 
 ```bash
 cat > /tmp/pain-map-score-request.json << 'ENDJSON'
@@ -127,7 +127,7 @@ Replace `SCORING_CONTEXT_HERE` with:
 
 ## Step 5: Build Pain Map
 
-For each account, use the extracted signals and Gemini scoring context to build the buyer pain map.
+For each account, use the extracted signals and LLM scoring context to build the buyer pain map.
 
 ```bash
 cat > /tmp/pain-map-analysis-request.json << 'ENDJSON'
