@@ -1,6 +1,6 @@
 # Brand Alchemy
 
-<img src="https://raw.githubusercontent.com/Varnan-Tech/opendirectory/main/docs/assets/opendirectory_banner.webp" width="100%" alt="Brand Alchemy Cover" />
+<img width="1920" height="1072" alt="brand-alchemy-skill-cover-image" src="https://github.com/user-attachments/assets/15d90c97-9eef-4eed-abb3-7ce58438adf0" />
 
 World-class brand strategist and naming expert. Uses an interrogation-led discovery phase to extract your brand's DNA, then applies scientific naming frameworks (Phonosemantics) and automated multi-TLD domain checking.
 
