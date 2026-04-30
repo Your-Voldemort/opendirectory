@@ -48,7 +48,7 @@ OpenDirectory is a central library that allows you to add new capabilities, or s
 | [`llms-txt-generator`](skills/llms-txt-generator) | Generates and maintains a standards-compliant llms. | `1.0.0` |
 | [`map-your-market`](skills/map-your-market) | Given a product description, category keywords, or competitor names (any combination), searches Reddit, Hacker News, GitHub Issues, G2, and Google... | `0.0.1` |
 | [`meeting-brief-generator`](skills/meeting-brief-generator) | Takes a company name and optional contact, runs targeted research via Tavily, synthesizes a 1-page pre-call brief with Gemini, and optionally saves... | `1.0.0` |
-| [`meta-ads-skill`](skills/meta-ads-skill) | Use when interacting with the Meta Ads MCP server to manage accounts, campaigns, ads, insights, and targeting, or to troubleshoot OAuth token authe... | `0.0.1` |
+| [`meta-ads-skill`](skills/meta-ads-skill) | Use when interacting with the Meta Ads CLI to manage accounts, campaigns, ads, and insights. Act as an Expert Media Buyer. | `0.0.1` |
 | [`meta-tribeV2-skill`](skills/meta-tribeV2-skill) | Analyzes video hooks and scripts using Meta's TRIBE v2 fMRI model, providing a neuro-marketing breakdown of scroll-stopping power and retention risk. | `1.0.0` |
 | [`newsletter-digest`](skills/newsletter-digest) | Aggregates RSS feeds from the past week, synthesizes the top stories using Gemini, and publishes a newsletter digest to Ghost CMS. | `1.0.0` |
 | [`noise-to-linkedin-carousel`](skills/noise-to-linkedin-carousel) | Transforms messy, unstructured source material (transcripts, rough notes, etc. | `1.0.0` |
