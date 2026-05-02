@@ -1,6 +1,6 @@
 ---
 name: claude-md-generator
-description: ''
+description: Use when the user asks to generate, create, write, or update a CLAUDE.md (or AGENTS.md) file for a codebase. Reads the project structure, build commands, and conventions, then writes a focused CLAUDE.md under 200 lines that gives Claude Code only the non-obvious context it needs.
 compatibility: [claude-code, gemini-cli, github-copilot]
 author: OpenDirectory
 version: 1.0.0

@@ -1,6 +1,6 @@
 ---
 name: schema-markup-generator
-description: ''
+description: Use when the user asks to generate JSON-LD structured data or schema.org markup for a webpage (FAQPage, Article, Organization, Product, BreadcrumbList, HowTo, etc.). Reads a live URL, local HTML file, or pasted HTML, detects applicable schema types, and outputs valid JSON-LD script blocks ready to paste, flagging any missing required fields rather than inventing data.
 compatibility: [claude-code, gemini-cli, github-copilot]
 author: OpenDirectory
 version: 1.0.0
