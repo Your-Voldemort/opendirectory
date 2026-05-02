@@ -160,7 +160,7 @@ validateSkills();
 
 console.log('\nValidating skill descriptions...');
 try {
-  execSync('npx tsx scripts/validate-skill-descriptions.ts', { stdio: 'inherit' });
+  execSync('pnpm exec tsx scripts/validate-skill-descriptions.ts', { stdio: 'inherit' });
 } catch (e) {
   process.exit(1);
 }

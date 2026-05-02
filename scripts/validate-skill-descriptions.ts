@@ -35,6 +35,10 @@ for (const folder of fs.readdirSync(SKILLS_DIR)) {
       failures.push({ file, reason: 'no description in frontmatter', value: '' });
     } else if (typeof desc !== 'string') {
       failures.push({ file, reason: 'description is not a string', value: String(desc) });
+    } else if (desc.includes('\n')) {
+      // build-registry.ts uses a line-based YAML parser that mangles block scalars
+      // (description: |). Reject multiline descriptions until both parsers are unified.
+      failures.push({ file, reason: 'multiline description not supported by registry builder', value: desc });
     } else if (desc.trim() === '') {
       failures.push({ file, reason: 'empty description', value: desc });
     } else if (PLACEHOLDER_RE.test(desc.trim())) {
