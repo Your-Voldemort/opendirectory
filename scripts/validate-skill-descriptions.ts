@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
 
 const SKILLS_DIR = path.join(process.cwd(), 'skills');
 const PLACEHOLDER_RE = /^A skill for [a-z0-9-]+$/i;
@@ -18,16 +19,6 @@ function findSkillMd(dir: string): string[] {
   return out;
 }
 
-function extractDescription(content: string): string | null {
-  const m = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-  if (!m) return null;
-  for (const line of m[1].split(/\r?\n/)) {
-    const mm = line.match(/^description\s*:\s*(.*)$/);
-    if (mm) return mm[1].trim().replace(/^['"]|['"]$/g, '');
-  }
-  return null;
-}
-
 const failures: Failure[] = [];
 for (const folder of fs.readdirSync(SKILLS_DIR)) {
   const folderPath = path.join(SKILLS_DIR, folder);
@@ -38,14 +29,17 @@ for (const folder of fs.readdirSync(SKILLS_DIR)) {
     continue;
   }
   for (const file of files) {
-    const desc = extractDescription(fs.readFileSync(file, 'utf-8'));
-    if (desc === null) {
+    const { data } = matter(fs.readFileSync(file, 'utf-8'));
+    const desc = data.description;
+    if (desc === undefined || desc === null) {
       failures.push({ file, reason: 'no description in frontmatter', value: '' });
-    } else if (desc === '') {
+    } else if (typeof desc !== 'string') {
+      failures.push({ file, reason: 'description is not a string', value: String(desc) });
+    } else if (desc.trim() === '') {
       failures.push({ file, reason: 'empty description', value: desc });
-    } else if (PLACEHOLDER_RE.test(desc)) {
+    } else if (PLACEHOLDER_RE.test(desc.trim())) {
       failures.push({ file, reason: 'placeholder description', value: desc });
-    } else if (desc.length < 20) {
+    } else if (desc.trim().length < 20) {
       failures.push({ file, reason: 'description shorter than 20 chars', value: desc });
     }
   }

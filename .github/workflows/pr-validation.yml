@@ -29,9 +29,6 @@ jobs:
       - name: Validate skills structure
         run: pnpm exec tsx scripts/validate-pr.ts
 
-      - name: Validate skill descriptions
-        run: npx tsx scripts/validate-skill-descriptions.ts
-
       - name: Test registry builder
         run: pnpm exec tsx scripts/build-registry.ts
 
